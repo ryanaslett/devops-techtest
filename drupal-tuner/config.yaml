@@ -1,0 +1,7 @@
+vagrantfile-local:
+    vm:
+        box: centos6
+        box_url: http://puppet-vagrant-boxes.puppetlabs.com/centos-65-x64-virtualbox-puppet.box
+        hostname: devopstest
+        domain: drupal.org
+        memory: '2048'

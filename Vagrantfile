@@ -1,23 +1,22 @@
+require 'yaml'
 #
 # Single box with configuration defined in one Puppet module.
 #
-box      = 'centos6'
-url      = 'http://puppet-vagrant-boxes.puppetlabs.com/centos-65-x64-virtualbox-puppet.box'
-hostname = 'devopstest'
-domain   = 'drupal.org'
-ram      = '256'
+dir = File.dirname(File.expand_path(__FILE__))
+configValues = YAML.load_file("#{dir}/drupal-tuner/config.yaml")
+data = configValues['vagrantfile-local']
 
 Vagrant.configure("2") do |config|
 
-  config.vm.box = box
-  config.vm.box_url = url
-  config.vm.host_name = hostname + '.' + domain
+  config.vm.box = "#{data['vm']['box']}"
+  config.vm.box_url = "#{data['vm']['box_url']}"
+  config.vm.host_name = "#{data['vm']['hostname']}" + '.' + "#{data['vm']['domain']}"
 
   config.vm.provider "virtualbox" do |config|
-    config.vm.customize [
+    config.customize [
       'modifyvm', :id,
-      '--name', hostname,
-      '--memory', ram
+      '--name', "#{data['vm']['hostname']}",
+      '--memory', "#{data['vm']['memory']}"
     ]
   end
 
