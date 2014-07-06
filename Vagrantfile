@@ -3,7 +3,7 @@ require 'yaml'
 # Single box with configuration defined in one Puppet module.
 #
 dir = File.dirname(File.expand_path(__FILE__))
-configValues = YAML.load_file("#{dir}/drupal-tuner/config.yaml")
+configValues = YAML.load_file("#{dir}/drupal-site/config.yaml")
 data = configValues['vagrantfile-local']
 
 Vagrant.configure("2") do |config|
