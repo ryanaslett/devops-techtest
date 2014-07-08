@@ -5,3 +5,12 @@ vagrantfile-local:
         hostname: devopstest
         domain: drupal.org
         memory: '2048'
+        network:
+          private_network: 192.168.56.101
+          forwarded_port:
+              http:
+                  host: '8081'
+                  guest: '80'
+              https:
+                  host: '4297'
+                  guest: '443'
