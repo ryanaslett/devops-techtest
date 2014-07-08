@@ -32,7 +32,7 @@ Vagrant.configure("2") do |config|
     end
 
   config.vm.provision "puppet" do |puppet|
-    puppet.options = '--verbose --debug'
+#     puppet.options = '--verbose --debug'
     puppet.manifests_path = 'drupal-site/puppet/manifests'
     puppet.manifest_file = 'site.pp'
     puppet.module_path = [ 'drupal-site/puppet/forge-modules', 'drupal-site/puppet/custom-modules' ]
