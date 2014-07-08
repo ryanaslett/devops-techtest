@@ -1,7 +1,7 @@
 Puppet::Type.type(:drupal_module).provide(:drush) do
   desc "Manage Drupal modules via Drush"
 
-  commands :drush => 'drush'
+  commands :drush => '/usr/local/bin/drush'
 
   def self.instances
     mods = []
