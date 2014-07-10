@@ -52,7 +52,7 @@ _Which puppet modules to use?:_
 
 __Apache:__
 Dug around to sort out whether or not I want puppetlabs or example42’s apache module
-Decided on puppetlabs apache module. As I didnt jive with example42’s dependencies on puppi, and it seemed like puphpet
+Decided on puppetlabs apache module. As I didnt jive with example42’s dependencies on puppi, and it seemed like puphpet was trying to migrate to the official version as well.
 
 __MySql:__
 Obvious choice was obvious puppetlabs-mysql
