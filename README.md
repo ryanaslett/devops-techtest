@@ -62,7 +62,7 @@ included in the binford2k-drupal module.
 
 * Investigated how the providers and types were configured for drupal modules
 * Set up  dependencies
-* Tested configuraiton
+* Tested configuraiton: while ($notworking == true) { google_problem(); apply_fix(); }
 * Set up the Vagrantfile for some port mapping
 * Added an ascii art graphic which revealed that Vagrant chops output into 16k segments. Sometimes even the fun becomes enlightening.
 
