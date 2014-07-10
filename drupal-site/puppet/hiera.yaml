@@ -1,0 +1,7 @@
+---
+:backends: yaml
+:yaml:
+    :datadir: '/vagrant/drupal-site'
+:hierarchy:
+    - config
+:logger: console
