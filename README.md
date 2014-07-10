@@ -1,6 +1,14 @@
 Devops Test
 ===========
-Here's what I went through to get this knocked out.
+
+To verify that this is working:
+
+add `127.0.0.1 devops.dev` to your /etc/hosts  
+(I explored the possibility of automatically editing the local users host file with the https://github.com/cogitatio/vagrant-hostsupdater plugin, but that seemed overkill) 
+
+vagrant up
+point browser at http://devops.dev:8081 and login as admin/pass
+
 
 ## 1. Get something working immediately.
 Started with most obvious command (vagrant up)  - It didnt work, so I fixed vagrantfile, commited fix.
