@@ -21,6 +21,7 @@ Vagrant.configure("2") do |config|
     ]
   end
 
+  # Map network ports to local ports
   if data['vm']['network']['private_network'].to_s != ''
       config.vm.network "private_network", ip: "#{data['vm']['network']['private_network']}"
     end
@@ -31,8 +32,19 @@ Vagrant.configure("2") do |config|
       end
     end
 
+    # Do Initial Setup
+    config.vm.provision "shell" do |s|
+        s.path = "shell/initial-setup.sh"
+        s.args = "/vagrant"
+        s.keep_color = true
+      end
+
+  # Lets make sure that we're running the latest puppet on the VM.
+  #config.vm.provision :shell, :path => "shell/update-puppet.sh"
+
   config.vm.provision "puppet" do |puppet|
-#     puppet.options = '--verbose --debug'
+   puppet.options = "--hiera_config /vagrant/drupal-site/puppet/hiera.yaml"
+#    puppet.options = "--verbose --debug --hiera_config /vagrant/drupal-site/puppet/hiera.yaml"
     puppet.manifests_path = 'drupal-site/puppet/manifests'
     puppet.manifest_file = 'site.pp'
     puppet.module_path = [ 'drupal-site/puppet/forge-modules', 'drupal-site/puppet/custom-modules' ]
