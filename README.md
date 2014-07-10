@@ -100,7 +100,7 @@ Defintely would like to clean up the manifest files and get more of the data *ou
 * http://garylarizza.com/blog/2013/12/08/when-to-hiera/
 * http://ttboj.wordpress.com/2014/06/04/hiera-data-in-modules-and-os-independent-puppet/
 
-### Improve the configuration
+### Improve the actual server configuration
 
 Mysql/php/apache are not configured to be ideal for anything right now. Setting all the configuration variables to have a tuned, humming system would be nice, also be able to have different commandline args passed to vagrant to allow for a 'dev' state or production state machine with different configs (ie. which node to 'up')  Also do things like determine whether or not mysql database and files directory should be something that is persisted on the host system between installs.  
 
