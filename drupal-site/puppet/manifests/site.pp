@@ -36,24 +36,24 @@ php::module::ini { 'pecl-apc':
     'apc.shm_size'     => '64M',
   }
 }
+$enable_modules = prefix([ 'admin_menu', 'views' ], 'devops.dev::')
+$disable_modules = prefix([ 'toolbar', 'overlay', 'update'  ], 'devops.dev::')
 
 class { 'drupal':
-  installtype    => 'remote',
+  installtype   => 'remote',
   database       => 'drupal',
   dbuser         => 'drupal',
   dbdriver       => 'mysql',
   admin_password => 'pass',
-  require => Php::Module[ 'pecl-apc', 'xml', 'gd' ],
+  require        => Php::Module[ 'pecl-apc', 'xml', 'gd' ],
 }
 
-#$enable_modules = prefix([ 'admin_menu', 'views' ], 'devops.dev::')
-#drupal_module { $enable_modules:
-#  ensure => present,
-#  require => Class['drupal'],
-#}
-#
-#$disable_modules = prefix([ 'toolbar', 'overlay' ], 'devops.dev::')
-#drupal_module { $disable_modules:
-#  ensure => absent,
-#  require => Class['drupal'],
-#}
+drupal_module { $enable_modules:
+  ensure  => enabled,
+  require => Drupal::Site['default'],
+}
+
+drupal_module { $disable_modules:
+  ensure  => disabled,
+  require => Drupal::Site['default'],
+}
